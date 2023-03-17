@@ -1,0 +1,13 @@
+main {
+  height: fit-content;
+  background-color: rgb(232, 228, 255);
+  padding: 20px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-wrapper {
+  display: flex;
+  justify-content: space-between;
+}

@@ -1,0 +1,55 @@
+$fontcolor: rgb(182, 151, 197);
+$fontcoloronhover: rgb(243, 224, 252);
+$backgroundcolor:rgba(250, 235, 215, 0.116);
+$backgroundcoloronhover: rgba(81, 63, 87, 0.388);
+
+.create-board-wrapper {
+  background-color: $backgroundcolor;
+  border: 2px dashed $fontcolor;
+  width: 15em;
+  height: 10em;
+
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  transition: all ease-in 0.3s;
+
+  &:hover  {
+    background-color: $backgroundcoloronhover;
+    cursor: pointer;
+    border: 2px dashed $fontcoloronhover;
+
+    & p {
+      color: $fontcoloronhover;
+    }
+  }
+}
+
+.create-board-p {
+  color: $fontcolor;
+  font-weight: 500;
+  transition: all ease-in 0.2s;
+}
+
+.create-form-wrapper {
+  background-color: $backgroundcoloronhover;
+  border: 2px dashed $fontcoloronhover;
+  width: 15em;
+  height: 10em;
+
+  display: flex;
+  flex-direction: column;
+  justify-content:space-around  ;
+  align-items: center;
+}
+
+.create-form-wrapper p {
+  font-size: large;
+  color: $fontcoloronhover;
+}
+
+.create-btns-wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 85%;
+}

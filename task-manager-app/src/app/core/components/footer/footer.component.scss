@@ -1,0 +1,18 @@
+footer {
+  max-width: 1920px;
+  width: 100%;
+  font-family: 'Titan One';
+  color: rgb(182, 151, 197);
+
+  background-color: rgb(128, 106, 142);
+}
+
+.footer-wrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.footer-p {
+  margin: 0;
+}

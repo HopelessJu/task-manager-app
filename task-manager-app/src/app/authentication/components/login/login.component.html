@@ -1,0 +1,23 @@
+<div class="login-wrapper">
+  <h2 class="login-header">Log In</h2>
+  <form [formGroup]="loginForm" class="login-form-wrapper">
+    <mat-form-field appearance="fill">
+      <mat-label>User login</mat-label>
+      <input matInput formControlName="login" [(ngModel)]="userPostObj.login">
+      <mat-error *ngIf="controls['login'].getError('required')">Login is required</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Password</mat-label>
+      <input [type]="hide ? 'password' : 'text'" matInput formControlName="password" [(ngModel)]="userPostObj.password">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      <mat-error *ngIf="controls['password'].getError('required')">Password is required</mat-error>
+    </mat-form-field>
+    <button class="login-btn" mat-raised-button color="primary" (click)="onLoginBtnClick()">Log In</button>
+  </form>
+  <div class="to-signup-form">
+    <p>Don't have an account?</p>
+    <a routerLink="/signup">Sing Up</a>
+  </div>
+</div>

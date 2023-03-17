@@ -1,0 +1,41 @@
+
+<div class="registration-wrapper">
+  <h2 class="registration-header">Sign Up</h2>
+  <form [formGroup]="signUpForm" class="signup-form-wrapper">
+    <mat-form-field appearance="fill">
+      <mat-label>User name</mat-label>
+      <input matInput formControlName="username" [(ngModel)]="userPostObj.name">
+      <mat-error *ngIf="controls['username'].getError('required')">User name is required</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>User login</mat-label>
+      <input matInput formControlName="login" [(ngModel)]="userPostObj.login">
+      <mat-error *ngIf="controls['login'].getError('required')">Login is required</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Password</mat-label>
+      <input matInput formControlName="password" [type]="hide ? 'password' : 'text'" [(ngModel)]="userPostObj.password">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      <mat-error *ngIf="controls['password'].getError('required')">Password is required</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Confirm password</mat-label>
+      <input matInput formControlName="confirm_password" [type]="hide ? 'password' : 'text'">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      <mat-error *ngIf="controls['confirm_password'].getError('MustMatch')">Should match the password</mat-error>
+    </mat-form-field>
+    <button class="create-account-btn" mat-raised-button color="primary" (click)="onCreateAccountBtnClick()">Create account</button>
+  </form>
+  <div class="to-login-form">
+    <p>Already have an account?</p>
+    <a routerLink="/login">Log in</a>
+  </div>
+</div>
+
+
+
+

@@ -1,0 +1,13 @@
+<div class="create-board-wrapper" *ngIf="!showForm" (click)="showCreateForm()">
+  <p class="create-board-p">create new board</p>
+</div>
+<div class="create-form-wrapper" *ngIf="showForm">
+  <p class="create-board-header">Create new board</p>
+    <input type="text" placeholder="Enter board title" [(ngModel)]="boardPostRequestObj.title" name="" id="">
+  <div class="create-btns-wrapper">
+    <button mat-raised-button  class="cancel-create-btn" (click)="closeCreateForm()">Cancel</button>
+    <button mat-raised-button  class="create-board-btn" (click)="onCreateBoardBtnClick()">Create</button>
+  </div>
+
+</div>
+
