@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { UserItem } from './../../models/user.model';
 import { AuthenticationService } from './../../services/authentication.service';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
@@ -20,7 +21,7 @@ export class SignupComponent {
     password: '',
   }
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthenticationService) {
+  constructor(private formBuilder: FormBuilder, private authService: AuthenticationService, private router: Router) {
     this.signUpForm = formBuilder.group({
       username: new FormControl(null, Validators.required),
       login: new FormControl(null, Validators.required),
@@ -53,7 +54,8 @@ export class SignupComponent {
 
   onCreateAccountBtnClick() {
     this.authService.createUser(this.userPostObj).subscribe((item) => {
-      console.log(item)
+      window.alert('Success!')
+      this.router.navigate(['/login'])
     })
   }
 

@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { UserItem } from '../models/user.model';
 
@@ -13,7 +13,11 @@ export class AuthenticationService {
   constructor(private httpClient: HttpClient) { }
 
   getUsers(): Observable<UserItem[]> {
-    return this.httpClient.get<UserItem[]>(this.urlUsers)
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.httpClient.get<UserItem[]>(this.urlUsers, {headers})
 
   }
 
@@ -21,7 +25,7 @@ export class AuthenticationService {
     return this.httpClient.post<UserItem>(this.urlAuth, item)
   }
 
-  loginUser(item:UserItem): Observable<UserItem> {
-    return this.httpClient.post<UserItem>(this.urlSignin, item)
+  loginUser(item:UserItem): Observable<{token: string}> {
+    return this.httpClient.post<{token: string}>(this.urlSignin, item)
   }
 }

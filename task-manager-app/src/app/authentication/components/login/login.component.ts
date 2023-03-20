@@ -11,13 +11,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  hide:boolean = true;
+  hide: boolean = true;
   loginForm: FormGroup;
-  userList: UserItem[] = [];
   userPostObj: UserItem = {
     login: '',
     password: '',
-    token: '',
   }
 
   constructor(private formBuilder: FormBuilder, private authService: AuthenticationService, private router: Router) {
@@ -34,13 +32,18 @@ export class LoginComponent {
   onLoginBtnClick() {
     this.authService.loginUser(this.userPostObj).subscribe(
       (item) => {
-      this.router.navigate(['/main'])
+        if(item.token) {
+          localStorage.setItem('token', item.token)
+          this.router.navigate(['/main'])
+          this.setCurrentUsers(this.userPostObj.login);
+        }
     })
   }
 
-  private getUsers() {
+  private setCurrentUsers(currentUserLoginName: string) {
     this.authService.getUsers().subscribe((userList) => {
-      this.userList = userList;
+      const user = userList.find(user => user.login === currentUserLoginName)
+      localStorage.setItem('currentUser', JSON.stringify(user))
     })
   }
 }
