@@ -1,0 +1,28 @@
+$fontcolor: rgb(243, 224, 252);
+$backgroundcolor: rgba(81, 63, 87, 0.388);
+
+.logged-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  & p {
+    margin: 0;
+    color: $fontcolor;
+    font-size: large;
+  }
+
+  & span {
+    color: $backgroundcolor;
+    font-size: 32px;
+  }
+
+  & div {
+    background-image: url("../../assets/icon.png");
+    background-position: center;
+    background-size: 135%;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+  }
+}

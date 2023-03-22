@@ -11,10 +11,8 @@ import { AuthenticationService } from './services/authentication.service';
 
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatIconModule} from '@angular/material/icon';
-import { ProfileViewComponent } from './components/profile-view/profile-view.component';
-
-
 
 
 @NgModule({
@@ -22,7 +20,6 @@ import { ProfileViewComponent } from './components/profile-view/profile-view.com
     AuthenticationComponent,
     SignupComponent,
     LoginComponent,
-    ProfileViewComponent
   ],
   exports: [
     AuthenticationComponent,
@@ -30,6 +27,7 @@ import { ProfileViewComponent } from './components/profile-view/profile-view.com
   imports: [
     CommonModule,
     MatButtonModule,
+    MatAutocompleteModule,
     RouterModule,
     FormsModule,
     ReactiveFormsModule,

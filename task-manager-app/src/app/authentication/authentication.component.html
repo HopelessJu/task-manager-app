@@ -1,5 +1,11 @@
 <div class="auth-wrapper">
-  <button mat-raised-button color="primary" routerLink="/login">Login</button>
-  <button  mat-raised-button color="accent" routerLink="/signup">SignUp</button>
+  <button mat-raised-button color="primary" routerLink="/login" *ngIf="!token"> Login</button>
+  <button mat-raised-button color="accent" routerLink="/signup" *ngIf="!token">SignUp</button>
+  <div class="logged-wrapper" *ngIf="token" >
+    <p *ngIf="token">{{user.name}}</p>
+    <div></div>
+    <span> | </span>
+    <button mat-raised-button color="accent" (click)="onLogoutBtnClick()">Log out</button>
+  </div>
 </div>
 

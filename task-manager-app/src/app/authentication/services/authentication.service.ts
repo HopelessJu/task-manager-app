@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { UserItem } from '../models/user.model';
@@ -10,7 +10,14 @@ export class AuthenticationService {
   private urlAuth:string = 'https://final-task-backend-production-a3f5.up.railway.app/auth/signup';
   private urlSignin:string = 'https://final-task-backend-production-a3f5.up.railway.app/auth/signin';
   private urlUsers:string = 'https://final-task-backend-production-a3f5.up.railway.app/users';
+  private token = new BehaviorSubject('');
+  token$ = this.token.asObservable();
+
   constructor(private httpClient: HttpClient) { }
+
+  changeData(token: string) {
+    this.token.next(token)
+  };
 
   getUsers(): Observable<UserItem[]> {
     const token = localStorage.getItem('token');
@@ -26,6 +33,6 @@ export class AuthenticationService {
   }
 
   loginUser(item:UserItem): Observable<{token: string}> {
-    return this.httpClient.post<{token: string}>(this.urlSignin, item)
+    return this.httpClient.post<{token: string}>(this.urlSignin, item);
   }
 }

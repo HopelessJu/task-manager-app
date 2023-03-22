@@ -18,7 +18,7 @@ export class LoginComponent {
     password: '',
   }
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthenticationService, private router: Router) {
+  constructor(private formBuilder: FormBuilder, public authService: AuthenticationService, private router: Router) {
     this.loginForm = formBuilder.group({
       login: new FormControl(null, Validators.required),
       password: new FormControl(null, Validators.required),
@@ -33,17 +33,20 @@ export class LoginComponent {
     this.authService.loginUser(this.userPostObj).subscribe(
       (item) => {
         if(item.token) {
-          localStorage.setItem('token', item.token)
-          this.router.navigate(['/main'])
-          this.setCurrentUsers(this.userPostObj.login);
+          localStorage.setItem('token', item.token);
+          this.setCurrentUsers(this.userPostObj.login || '', item.token);
+          this.router.navigate(['/main']);
         }
     })
   }
 
-  private setCurrentUsers(currentUserLoginName: string) {
-    this.authService.getUsers().subscribe((userList) => {
-      const user = userList.find(user => user.login === currentUserLoginName)
-      localStorage.setItem('currentUser', JSON.stringify(user))
+  private setCurrentUsers(currentUserLoginName: string, token: string) {
+    this.authService.getUsers().subscribe((userList:UserItem[]) => {
+      localStorage.setItem('userList', JSON.stringify(userList))
+      const user:UserItem | undefined = userList.find(user => user.login === currentUserLoginName)
+      localStorage.setItem('currentUser', JSON.stringify(user));
+      this.authService.changeData(token);
     })
   }
+
 }
