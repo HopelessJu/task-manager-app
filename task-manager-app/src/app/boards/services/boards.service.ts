@@ -1,6 +1,6 @@
 import { BoardItem } from './../models/boards.model';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 
@@ -11,11 +11,19 @@ export class BoardsService {
   constructor(private httpClient: HttpClient) { }
 
   getBoards(): Observable<BoardItem[]> {
-    return this.httpClient.get<BoardItem[]>(this.url)
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.httpClient.get<BoardItem[]>(this.url, {headers});
   }
 
   createBoard(item: BoardItem): Observable<BoardItem> {
-    return this.httpClient.post<BoardItem>(this.url, item)
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.httpClient.post<BoardItem>(this.url, item, {headers} )
   }
 
 

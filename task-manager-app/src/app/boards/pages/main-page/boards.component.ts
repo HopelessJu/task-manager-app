@@ -14,12 +14,13 @@ export class BoardsComponent implements OnInit {
   constructor(private boardsService: BoardsService) {}
 
   ngOnInit(): void {
-    // this.getBoards()
+    this.getBoards();
   }
 
  private getBoards() {
     this.boardsService.getBoards().subscribe((boardList) => {
       this.boardList = boardList;
+      console.log(this.boardList)
     });
   }
 }

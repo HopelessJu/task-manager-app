@@ -1,10 +1,9 @@
  <header class="header-wr">
     <div class="header-div-wrapper">
       <app-localization></app-localization>
-      <a  routerLink="/main">Main</a>
+      <a  routerLink="/main" *ngIf="loggedIn">Main</a>
       <p class="header-p">PMA</p>
       <app-authentication></app-authentication>
-
     </div>
   </header>
 

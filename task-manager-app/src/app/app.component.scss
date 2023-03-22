@@ -1,13 +1,14 @@
 main {
+  max-width: 1920px;
   height: fit-content;
+  min-height: 480px;
   background-color: rgb(232, 228, 255);
   padding: 20px 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
 }
 
-.auth-wrapper {
-  display: flex;
-  justify-content: space-between;
+.main-wr {
+  width: 100%;
+  justify-content: center;
+  align-items: center;
 }

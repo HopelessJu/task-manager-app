@@ -1,0 +1,39 @@
+$fontcolor: rgb(182, 151, 197);
+$fontcoloronhover: rgb(243, 224, 252);
+$backgroundcolor:rgba(250, 235, 215, 0.116);
+$backgroundcoloronhover: rgba(81, 63, 87, 0.388);
+$accentcolor: #ffd640;
+
+
+.board-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%
+}
+
+.board-header {
+  display: flex;
+  max-width: 1160px;
+  width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 2px solid #ffd640;
+  padding-bottom: 5px;
+  margin-bottom: 20px;
+
+  & h2 {
+    margin: 0;
+    color: $fontcolor;
+  }
+}
+
+.columns-ctr {
+  display: flex;
+  gap: 20px;
+  overflow-x: scroll;
+}
+
+.mat-mdc-fab.mat-primary, .mat-mdc-mini-fab.mat-primary {
+  --mdc-fab-container-color: rgb(182, 151, 197);;
+}

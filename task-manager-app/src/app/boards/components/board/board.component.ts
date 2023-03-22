@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { BoardItem } from '../../models/boards.model';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,10 +13,14 @@ export class BoardComponent implements OnInit {
   @Input() item: BoardItem | null = null;
 
 
-  constructor() {}
+
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
+  }
 
+  onBoardClick() {
+    this.router.navigate(['board'])
   }
 
 }

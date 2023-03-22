@@ -5,6 +5,7 @@ import { CreateBoardComponent } from './components/create-board/create-board.com
 import { BoardComponent } from './components/board/board.component';
 import { BoardsService } from './services/boards.service';
 import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 
 
@@ -18,10 +19,11 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     MatButtonModule,
-    FormsModule
+    MatIconModule,
+    FormsModule,
   ],
   providers: [
-    BoardsService
+    BoardsService,
   ],
 })
 export class BoardsModule { }

@@ -5,13 +5,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BoardsModule } from './boards/boards.module';
-import { DirectivesDirective } from './shared/directives.directive';
+import { SingleBoardModule } from './single-board/single-board.module';
+import { SharedModule } from './shared/shared.module';
+
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    DirectivesDirective,
   ],
   exports: [],
   imports: [
@@ -20,8 +22,10 @@ import { DirectivesDirective } from './shared/directives.directive';
     BrowserAnimationsModule,
     CoreModule,
     BoardsModule,
+    SingleBoardModule,
+    SharedModule
   ],
-  providers: [],
+  providers: [ ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

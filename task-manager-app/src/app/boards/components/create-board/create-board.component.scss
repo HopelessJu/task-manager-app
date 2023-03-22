@@ -6,6 +6,7 @@ $backgroundcoloronhover: rgba(81, 63, 87, 0.388);
 .create-board-wrapper {
   background-color: $backgroundcolor;
   border: 2px dashed $fontcolor;
+  border-radius: 5px;
   width: 15em;
   height: 10em;
 

@@ -1,3 +1,21 @@
+.boards-wrapper {
+  max-width: 1160px;
+}
+
 .boards-page-header {
   margin: 0 auto;
+  margin-bottom: 10px;
+  text-align: center;
+  color: rgb(128, 106, 142);
+  font-weight: 500;
+  font-size: 2em;
+  border-bottom: 2px solid #ffd740;
+}
+
+.boards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 15px;
 }

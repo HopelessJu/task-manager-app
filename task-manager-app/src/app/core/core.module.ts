@@ -9,6 +9,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {HttpClientModule } from '@angular/common/http';
 
 
+
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -25,7 +26,7 @@ import {HttpClientModule } from '@angular/common/http';
     MatToolbarModule,
     HttpClientModule,
     RouterModule
-  ]
+  ],
 
 })
 export class CoreModule { }

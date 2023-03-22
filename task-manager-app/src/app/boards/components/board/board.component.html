@@ -1,1 +1,6 @@
-<p>board works!</p>
+<div class="board-wrapper" (click)="onBoardClick()">
+    <p class="board-title">{{item?.title}}</p>
+  <div class="remove-btn-ctr">
+    <button mat-mini-fab color="primary" class="remove-board-btn"><mat-icon>delete</mat-icon></button>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+$fontcolor: rgb(182, 151, 197);
+$fontcoloronhover: rgb(243, 224, 252);
+$backgroundcolor:rgba(250, 235, 215, 0.116);
+$backgroundcoloronhover: rgba(81, 63, 87, 0.388);
+$accentcolor: #ffd640;
+
+
+
+.task-ctr {
+  width: 100%;
+  background-color: $backgroundcoloronhover;
+  display: flex;
+  align-items: flex-end;
+  box-sizing: border-box;
+  padding: 3px 3px;
+}
+
+.task-content {
+  width: 90%;
+
+  & p {
+    color: $fontcoloronhover;
+  }
+}
