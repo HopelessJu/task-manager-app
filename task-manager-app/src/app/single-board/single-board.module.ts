@@ -9,6 +9,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { TasksComponent } from './tasks/tasks.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -24,7 +25,8 @@ import { TasksComponent } from './tasks/tasks.component';
     MatButtonModule,
     MatFormFieldModule,
     RouterModule,
-    MatIconModule
+    MatIconModule,
+    SharedModule
   ]
 })
 export class SingleBoardModule { }

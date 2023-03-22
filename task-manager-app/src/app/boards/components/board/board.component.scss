@@ -21,7 +21,6 @@ $backgroundcoloronhover: rgba(81, 63, 87, 0.388);
   &:hover  {
     box-shadow: 0 0 6px 1px #55545252;
     background-color: $backgroundcoloronhover;
-    cursor: pointer;
     border: 2px solid $fontcoloronhover;
 
     & p {
@@ -32,7 +31,8 @@ $backgroundcoloronhover: rgba(81, 63, 87, 0.388);
   & p {
     margin: 10px 0 0 0;
     color: $fontcolor;
-    font-weight: 500;
+    font-weight: 600;
+    text-transform: uppercase;
     word-break: break-all;
   }
 }
@@ -40,10 +40,10 @@ $backgroundcoloronhover: rgba(81, 63, 87, 0.388);
 .remove-btn-ctr {
   width: 100%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
 }
 
-.remove-board-btn {
+.remove-board-btn, .open-board-btn {
   width: 30px;
   height: 30px;
   filter: sepia(0.6);

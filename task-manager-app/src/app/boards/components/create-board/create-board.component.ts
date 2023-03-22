@@ -2,7 +2,7 @@ import { UserItem } from './../../../authentication/models/user.model';
 
 import { BoardItem } from './../../models/boards.model';
 import { BoardsService } from './../../services/boards.service';
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 
 @Component({
@@ -11,6 +11,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./create-board.component.scss']
 })
 export class CreateBoardComponent {
+  @Output() boardCreated = new EventEmitter<BoardItem>();
   boardPostRequestObj: BoardItem = {
     title: '',
     owner: '',
@@ -36,15 +37,7 @@ export class CreateBoardComponent {
     this.boardPostRequestObj.owner = parsed.login;
     this.boardPostRequestObj.users = mappedUsers;
     this.boardsService.createBoard(this.boardPostRequestObj).subscribe((item) => {
-      console.log(item)
-      this.getBoards();
+        this.boardCreated.emit(item)
     })
-  }
-
-  private getBoards() {
-    this.boardsService.getBoards().subscribe((boardList) => {
-      this.boardList = boardList;
-      console.log(this.boardList)
-    });
   }
 }

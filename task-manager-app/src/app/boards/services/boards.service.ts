@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 export class BoardsService {
   private url = 'https://final-task-backend-production-a3f5.up.railway.app/boards';
 
+
   constructor(private httpClient: HttpClient) { }
 
   getBoards(): Observable<BoardItem[]> {
@@ -24,6 +25,15 @@ export class BoardsService {
       'Authorization': `Bearer ${token}`
     });
     return this.httpClient.post<BoardItem>(this.url, item, {headers} )
+  }
+
+  deleteBoard(boardId: string): Observable<BoardItem> {
+    const token = localStorage.getItem('token');
+    const url = `https://final-task-backend-production-a3f5.up.railway.app/boards/${boardId}`
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.httpClient.delete<BoardItem>(url, {headers})
   }
 
 

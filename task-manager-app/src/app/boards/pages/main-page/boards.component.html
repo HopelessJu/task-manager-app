@@ -2,12 +2,8 @@
   <h2 class="boards-page-header">BOARDS</h2>
   <div class="boards-container">
     <div *ngFor="let board of boardList">
-      <app-board [item]="board"></app-board>
+      <app-board [item]="board" (boardDeleted)="getBoards()"></app-board>
     </div>
-    <app-create-board></app-create-board>
+    <app-create-board (boardCreated)="getBoards()"></app-create-board>
   </div>
 </div>
-
-
-
-<!-- *ngFor="let item of boardList" -->

@@ -17,10 +17,9 @@ export class BoardsComponent implements OnInit {
     this.getBoards();
   }
 
- private getBoards() {
+ public getBoards() {
     this.boardsService.getBoards().subscribe((boardList) => {
       this.boardList = boardList;
-      console.log(this.boardList)
     });
   }
 }

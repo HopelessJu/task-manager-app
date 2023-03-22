@@ -1,0 +1,59 @@
+$fontcolor: rgb(182, 151, 197);
+$fontcoloronhover: rgb(243, 224, 252);
+$backgroundcolor:rgba(250, 235, 215, 0.116);
+$backgroundcoloronhover: rgba(81, 63, 87, 0.388);
+$accentcolor: #ffd640;
+
+.modal-ctr {
+  position: absolute;
+  z-index: 2;
+  height: 100%;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #5b5b5b75;
+}
+
+.modal-wrapper {
+  position: absolute;
+  content: '';
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 300px;
+  height: 200px;
+  background-color: white;
+  border-radius: 5px;
+  border: 2px solid rgb(255 215 64);
+  box-shadow: 0 0 16px 3px #ab8fbd;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  box-sizing: border-box;
+  padding: 0px 10px;
+
+
+  & h2 {
+    color:#ffd640;
+    font-weight: 600;
+    }
+
+  & p {
+    color: #f44336;
+    font-size: large;
+  }
+
+  & span {
+    color: rgba(81, 63, 87, 0.81);
+    font-size: smaller;
+  }
+}
+
+.modal-btns {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}

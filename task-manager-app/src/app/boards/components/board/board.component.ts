@@ -1,6 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { BoardItem } from '../../models/boards.model';
+import { BoardItem } from './../../models/boards.model';
+import { BoardsService } from './../../services/boards.service';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -11,10 +13,13 @@ import { Router } from '@angular/router';
 
 export class BoardComponent implements OnInit {
   @Input() item: BoardItem | null = null;
+  @Output() boardDeleted = new EventEmitter<BoardItem>();
+  isClicked: boolean = false;
+  boardId:string = this.item?._id || '';
+  boardList: BoardItem[] = [];
 
-
-
-  constructor(private router: Router) {}
+  constructor(private router: Router, private boardsService: BoardsService) {
+  }
 
   ngOnInit(): void {
   }
@@ -23,4 +28,18 @@ export class BoardComponent implements OnInit {
     this.router.navigate(['board'])
   }
 
+  onRemoveBoardClick() {
+    this.isClicked = true;
+  }
+
+  cancel() {
+    this.isClicked = false;
+  }
+
+  confirm() {
+    this.boardsService.deleteBoard(this.item?._id || '').subscribe((item) => {
+      this.boardDeleted.emit(item);
+      this.isClicked = false;
+    })
+  }
 }
