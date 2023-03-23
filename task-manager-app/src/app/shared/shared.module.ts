@@ -4,15 +4,18 @@ import { ConfirmationModalComponent } from './confirmation-modal/confirmation-mo
 
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
+import { ColumnModalComponent } from './column-modal/column-modal.component';
 
 
 
 @NgModule({
   declarations: [
-    ConfirmationModalComponent
+    ConfirmationModalComponent,
+    ColumnModalComponent
   ],
   exports: [
-    ConfirmationModalComponent
+    ConfirmationModalComponent,
+    ColumnModalComponent
   ],
   imports: [
     CommonModule,

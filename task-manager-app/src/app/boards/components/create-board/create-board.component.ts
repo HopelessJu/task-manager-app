@@ -27,6 +27,7 @@ export class CreateBoardComponent {
   }
 
   closeCreateForm() {
+    this.boardPostRequestObj.title = '';
     this.showForm = false;
   }
 

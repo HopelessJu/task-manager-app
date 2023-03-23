@@ -5,11 +5,13 @@ import { CreateColumnComponent } from './columns/create-column/create-column.com
 import { ColumnComponent } from './columns/column/column.component';
 import { RouterModule } from '@angular/router';
 
-import {MatButtonModule} from '@angular/material/button';
-import {MatIconModule} from '@angular/material/icon';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { TasksComponent } from './tasks/tasks.component';
 import { SharedModule } from '../shared/shared.module';
+
+import { SingleBoardService } from './services/single-board.service';
 
 
 
@@ -27,6 +29,9 @@ import { SharedModule } from '../shared/shared.module';
     RouterModule,
     MatIconModule,
     SharedModule
-  ]
+  ],
+  providers: [
+    SingleBoardService
+  ],
 })
 export class SingleBoardModule { }

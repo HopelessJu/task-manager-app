@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { ColumnItem } from '../models/column.model';
 
 @Component({
   selector: 'app-column',
@@ -6,6 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./column.component.scss']
 })
 export class ColumnComponent {
+  @Input() item: ColumnItem | null = null;
   isClicked: boolean = false;
 
   constructor() {}

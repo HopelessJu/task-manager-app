@@ -4,8 +4,9 @@
     <h2 class="board-title">Board title</h2>
   </div>
   <div class="columns-ctr">
-    <app-column></app-column>
-    <app-column></app-column>
+    <div *ngFor="let column of columnList" >
+      <app-column [item]="column"></app-column>
+    </div>
     <app-create-column></app-create-column>
   </div>
 </div>

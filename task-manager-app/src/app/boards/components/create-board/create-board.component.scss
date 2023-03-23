@@ -2,6 +2,7 @@ $fontcolor: rgb(182, 151, 197);
 $fontcoloronhover: rgb(243, 224, 252);
 $backgroundcolor:rgba(250, 235, 215, 0.116);
 $backgroundcoloronhover: rgba(81, 63, 87, 0.388);
+$accentcolor: #ffd640;
 
 .create-board-wrapper {
   background-color: $backgroundcolor;
@@ -42,11 +43,22 @@ $backgroundcoloronhover: rgba(81, 63, 87, 0.388);
   flex-direction: column;
   justify-content:space-around  ;
   align-items: center;
+
+  & input {
+    height: 35px;
+    border-radius: 2px;
+    border: none;
+
+    &:focus {
+      outline: 3px solid #ffd640;
+    }
+  }
 }
 
 .create-form-wrapper p {
   font-size: large;
   color: $fontcoloronhover;
+  margin: 0;
 }
 
 .create-btns-wrapper {
@@ -54,3 +66,5 @@ $backgroundcoloronhover: rgba(81, 63, 87, 0.388);
   justify-content: space-between;
   width: 85%;
 }
+
+

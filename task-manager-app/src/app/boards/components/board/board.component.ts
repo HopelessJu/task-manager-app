@@ -15,7 +15,6 @@ export class BoardComponent implements OnInit {
   @Input() item: BoardItem | null = null;
   @Output() boardDeleted = new EventEmitter<BoardItem>();
   isClicked: boolean = false;
-  boardId:string = this.item?._id || '';
   boardList: BoardItem[] = [];
 
   constructor(private router: Router, private boardsService: BoardsService) {
@@ -24,8 +23,8 @@ export class BoardComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onBoardClick() {
-    this.router.navigate(['board'])
+  onBoardClick(boardId?: string) {
+    this.router.navigate(['board', `${boardId}`])
   }
 
   onRemoveBoardClick() {
@@ -36,8 +35,8 @@ export class BoardComponent implements OnInit {
     this.isClicked = false;
   }
 
-  confirm() {
-    this.boardsService.deleteBoard(this.item?._id || '').subscribe((item) => {
+  confirm(boardId?: string) {
+    this.boardsService.deleteBoard(boardId || '').subscribe((item) => {
       this.boardDeleted.emit(item);
       this.isClicked = false;
     })

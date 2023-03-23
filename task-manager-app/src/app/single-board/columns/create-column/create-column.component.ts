@@ -6,5 +6,23 @@ import { Component } from '@angular/core';
   styleUrls: ['./create-column.component.scss']
 })
 export class CreateColumnComponent {
+  isClicked: boolean = false;
+
+  constructor() {}
+
+  onCreateColumnClick() {
+    this.isClicked = true;
+  }
+
+  cancel() {
+    this.isClicked = false;
+  }
+
+  confirm() {
+    console.log('confirm')
+    this.isClicked = false;
+  }
+
+
 
 }

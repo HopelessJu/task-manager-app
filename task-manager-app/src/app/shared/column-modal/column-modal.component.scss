@@ -33,7 +33,7 @@ $accentcolor: #ffd640;
   justify-content: space-evenly;
   gap: 10px;
   box-sizing: border-box;
-  padding: 10px 10px;
+  padding: 0px 10px;
 
 
   & h2 {
@@ -57,4 +57,16 @@ $accentcolor: #ffd640;
   display: flex;
   width: 100%;
   justify-content: space-around;
+}
+
+input {
+  height: 35px;
+  border-radius: 2px;
+  border: none;
+  outline: 2px solid $fontcolor;
+  width: 80%;
+
+  &:focus {
+    outline: 2px solid #ffd640;
+  }
 }

@@ -1,8 +1,8 @@
 <div class="board-wrapper">
     <p class="board-title">{{item?.title}}</p>
     <div class="remove-btn-ctr">
-    <button mat-mini-fab color="accent" class="open-board-btn" (click)="onBoardClick()"><mat-icon>developer_board</mat-icon></button>
+    <button mat-mini-fab color="accent" class="open-board-btn" (click)="onBoardClick(item?._id)"><mat-icon>exit_to_app</mat-icon></button>
     <button mat-mini-fab color="primary" class="remove-board-btn" (click)="onRemoveBoardClick()"><mat-icon>delete</mat-icon></button>
   </div>
 </div>
-<app-confirmation-modal *ngIf="isClicked" (cancelled)="cancel()" (confirmed)="confirm()"></app-confirmation-modal>
+<app-confirmation-modal *ngIf="isClicked" (cancelled)="cancel()" (confirmed)="confirm(item?._id)"></app-confirmation-modal>
