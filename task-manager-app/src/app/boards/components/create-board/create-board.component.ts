@@ -1,5 +1,4 @@
 import { UserItem } from './../../../authentication/models/user.model';
-
 import { BoardItem } from './../../models/boards.model';
 import { BoardsService } from './../../services/boards.service';
 import { Component, Output, EventEmitter } from '@angular/core';

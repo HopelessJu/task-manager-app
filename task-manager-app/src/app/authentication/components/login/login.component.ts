@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { UserItem } from './../../models/user.model';
 import { AuthenticationService } from './../../services/authentication.service';
@@ -10,19 +10,27 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   hide: boolean = true;
   loginForm: FormGroup;
-  userPostObj: UserItem = {
-    login: '',
-    password: '',
-  }
+  // userPostObj: UserItem = {
+  //   login: '',
+  //   password: '',
+  // }
 
   constructor(private formBuilder: FormBuilder, public authService: AuthenticationService, private router: Router) {
     this.loginForm = formBuilder.group({
-      login: new FormControl(null, Validators.required),
-      password: new FormControl(null, Validators.required),
+      login: [null, Validators.required],
+      password:[null, Validators.required],
     })
+  }
+
+  ngOnInit(): void {
+    const user: string | null = localStorage.getItem('currentUser');
+    const token: string | null = localStorage.getItem('token');
+    if(token && user) {
+      this.router.navigate(['main'])
+    }
   }
 
   get controls() {
@@ -30,12 +38,13 @@ export class LoginComponent {
   }
 
   onLoginBtnClick() {
-    this.authService.loginUser(this.userPostObj).subscribe(
+    const { login, password } = this.loginForm.value;
+    this.authService.loginUser({ login, password }).subscribe(
       (item) => {
         if(item.token) {
           localStorage.setItem('token', item.token);
-          this.setCurrentUsers(this.userPostObj.login || '', item.token);
-          this.router.navigate(['/main']);
+          this.setCurrentUsers(login, item.token);
+          this.router.navigate(['main']);
         }
     })
   }

@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { ColumnItem } from './../models/column.model';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { SingleBoardService } from '../../services/single-board.service';
+import { Router, ParamMap, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-create-column',
@@ -6,9 +9,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./create-column.component.scss']
 })
 export class CreateColumnComponent {
+  @Input() boardId: string = '';
+  @Output() columnCreated = new EventEmitter<ColumnItem>();
+  columnObj:ColumnItem = {
+    title: '',
+    order: 0
+  }
+
   isClicked: boolean = false;
 
-  constructor() {}
+  constructor(private singleBoardService: SingleBoardService, private route: ActivatedRoute) {}
 
   onCreateColumnClick() {
     this.isClicked = true;
@@ -18,8 +28,15 @@ export class CreateColumnComponent {
     this.isClicked = false;
   }
 
-  confirm() {
-    console.log('confirm')
+  confirm(inputValue: string) {
+    this.columnObj.title = inputValue;
+    this.route.params.subscribe(params => {
+    this.boardId = params['boardId'];
+  });
+  this.singleBoardService.createColumn(this.boardId, this.columnObj).subscribe(item => {
+    this.columnCreated.emit();
+    console.log(item)
+  })
     this.isClicked = false;
   }
 

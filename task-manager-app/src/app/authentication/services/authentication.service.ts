@@ -35,4 +35,22 @@ export class AuthenticationService {
   loginUser(item:UserItem): Observable<{token: string}> {
     return this.httpClient.post<{token: string}>(this.urlSignin, item);
   }
+
+  updateUser(userId:string, item:UserItem): Observable<UserItem> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    const url = `${this.urlUsers}/${userId}`;
+    return this.httpClient.put<UserItem>(url, item, {headers})
+  }
+
+  deleteUser(userId: string): Observable<UserItem> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    const url =`${this.urlUsers}/${userId}`;
+    return this.httpClient.delete<UserItem>(url, {headers})
+  }
 }

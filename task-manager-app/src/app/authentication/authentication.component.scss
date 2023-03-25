@@ -17,12 +17,9 @@ $backgroundcolor: rgba(81, 63, 87, 0.388);
     font-size: 32px;
   }
 
-  & div {
-    background-image: url("../../assets/icon.png");
-    background-position: center;
-    background-size: 135%;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-  }
+}
+
+.user-icon {
+  width: 30px;
+  height: 30px;
 }

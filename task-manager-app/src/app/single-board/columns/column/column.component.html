@@ -1,12 +1,16 @@
 <div class="column-wrapper">
-  <h2 class="column-title">Todo</h2>
-  <div class="tasks-ctr">
-    <app-tasks></app-tasks>
-    <app-tasks></app-tasks>
+  <h2 class="column-title">{{item?.title}}</h2>
+  <div class="all-tasks-ctr">
+    <div class="tasks-drop-list" cdkDropList [cdkDropListData]="taskList" (cdkDropListDropped)="drop($event, item?._id)">
+      <div class="tasks-ctr" *ngFor="let task of taskList" [cdkDragData]="task" cdkDrag>
+        <app-tasks [item]="task" (deleted)="getTasks()"></app-tasks>
+      </div>
+    </div>
   </div>
   <div class="task-btns">
-    <button mat-icon-button color="primary" class="add-task"><mat-icon>add</mat-icon></button>
+    <button mat-icon-button color="primary" class="add-task" (click)="onAddTaskClick()"><mat-icon>add</mat-icon></button>
     <button mat-icon-button color="primary" class="remove-task" (click)="onRemoveColumnClick()"><mat-icon>delete</mat-icon></button>
   </div>
 </div>
-<app-confirmation-modal *ngIf="isClicked" (cancelled)="cancel()" (confirmed)="confirm()"></app-confirmation-modal>
+<app-confirmation-modal *ngIf="toDelete" (cancelled)="cancelDelete()" (confirmed)="confirmDelete()"></app-confirmation-modal>
+<app-task-modal *ngIf="addTask" (cancelled)="cancelAdd()" (confirmed)="confirmAdd($event)"></app-task-modal>

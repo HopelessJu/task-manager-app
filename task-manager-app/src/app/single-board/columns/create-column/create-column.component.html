@@ -1,2 +1,2 @@
 <button class="create-column-btn" (click)="onCreateColumnClick()" >+ add new column</button>
-<app-column-modal *ngIf="isClicked" (cancelled)="cancel()" (confirmed)="confirm()"></app-column-modal>
+<app-column-modal *ngIf="isClicked" (cancelled)="cancel()" (confirmed)="confirm($event)"></app-column-modal>

@@ -8,13 +8,14 @@ import { Component, Output, EventEmitter } from '@angular/core';
 export class ColumnModalComponent {
   @Output() cancelled = new EventEmitter();
   @Output() confirmed = new EventEmitter();
+  title: string = ''
 
   onCancel() {
     this.cancelled.emit();
   }
 
   onConfirm() {
-    this.confirmed.emit();
+    this.confirmed.emit(this.title);
   }
 
 }

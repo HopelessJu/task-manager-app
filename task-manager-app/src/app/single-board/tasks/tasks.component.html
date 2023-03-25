@@ -1,8 +1,0 @@
-<div class="task-ctr">
-  <div class="task-content">
-  <p class="task-title">Title</p>
-  <p class="task-description">Description</p>
-  </div>
-  <button mat-icon-button color="accent" (click)="onRemoveTaskClick()"><mat-icon>delete</mat-icon></button>
-</div>
-<app-confirmation-modal *ngIf="isClicked" (cancelled)="cancel()" (confirmed)="confirm()"></app-confirmation-modal>

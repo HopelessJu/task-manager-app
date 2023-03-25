@@ -1,0 +1,26 @@
+<div class="modal-ctr">
+  <div class="modal-wrapper">
+    <h2>Edit user login</h2>
+    <input type="text" placeholder="New login" [(ngModel)]="login">
+    <input type="text" placeholder="New password"  [(ngModel)]="password">
+    <!-- <form [formGroup]="loginForm" class="login-form-wrapper">
+      <mat-form-field appearance="fill">
+        <mat-label>User login</mat-label>
+        <input matInput formControlName="login" autocomplete="login">
+        <mat-error *ngIf="controls['login'].getError('required')">Login is required</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input [type]="hide ? 'password' : 'text'" matInput formControlName="password" autocomplete="current-password">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="controls['password'].getError('required')">Password is required</mat-error>
+      </mat-form-field>
+    </form> -->
+    <div class="modal-btns">
+      <button mat-raised-button color="primary" (click)="onCancel()">Cancel</button>
+      <button mat-raised-button color="accent" (click)="onConfirm()">Confirm</button>
+    </div>
+  </div>
+</div>

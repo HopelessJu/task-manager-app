@@ -4,11 +4,9 @@ $backgroundcolor:rgba(250, 235, 215, 0.116);
 $backgroundcoloronhover: rgba(81, 63, 87, 0.388);
 $accentcolor: #ffd640;
 
-
 .column-wrapper {
   width: 14em;
-  min-height: 20em;
-  height: fit-content;
+  height: 20em;
   border: 2px solid $backgroundcoloronhover;
   border-radius: 5px;
   display: flex;
@@ -27,12 +25,26 @@ $accentcolor: #ffd640;
   }
 }
 
+.all-tasks-ctr {
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+}
+
 .tasks-ctr {
   width: 100%;
   height: 80%;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+}
+
+.tasks-drop-list {
+  display: flex;
+  flex-direction: column;
+  gap: inherit;
+  min-height: 8em;
 }
 
 .task-btns {

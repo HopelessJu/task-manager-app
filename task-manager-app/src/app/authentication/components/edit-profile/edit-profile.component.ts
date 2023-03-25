@@ -1,25 +1,22 @@
 import { Router } from '@angular/router';
-import { UserItem } from './../../models/user.model';
+import { UserItem } from '../../models/user.model';
 import { AuthenticationService } from './../../services/authentication.service';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { Component } from '@angular/core';
-
-
 
 @Component({
-  selector: 'app-signup',
-  templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.scss']
+  selector: 'app-edit-profile',
+  templateUrl: './edit-profile.component.html',
+  styleUrls: ['./edit-profile.component.scss']
 })
-export class SignupComponent {
+export class EditProfileComponent {
+  @Output() deleted = new EventEmitter()
   hide:boolean = true;
+  deleteUser: boolean = false;
+  token: string = '';
+  user: UserItem = {};
   signUpForm: FormGroup;
-  userList: UserItem[] = [];
-  // userPostObj: UserItem = {
-  //   name: '',
-  //   login: '',
-  //   password: '',
-  // }
+  userId:string = '';
 
   constructor(private formBuilder: FormBuilder, private authService: AuthenticationService, private router: Router) {
     this.signUpForm = formBuilder.group({
@@ -52,25 +49,33 @@ export class SignupComponent {
     }
   }
 
-  onCreateAccountBtnClick() {
+  onEditAccountBtnClick() {
     const {name, login, password} = this.signUpForm.value;
-    this.authService.createUser({name, login, password}).subscribe((item) => {
-      // window.alert(`Success! User ${item.login} was created`)
-      this.router.navigate(['/login'])
+    this.userId = (JSON.parse(localStorage.getItem('currentUser') || ''))?._id
+    console.log(this.userId)
+    this.authService.updateUser(this.userId, {name, login, password}).subscribe((item) => {
+      localStorage.setItem('currentUser', JSON.stringify(item));
+      this.user.login = login;
+      console.log(localStorage.getItem('currentUser'))
+      console.log(this.user.login)
+      this.router.navigate(['main'])
     })
   }
 
-  onClick() {
-    console.log('clicked')
+  cancelDelete() {
+    this.deleteUser = false;
   }
 
-  private getUsers() {
-    this.authService.getUsers().subscribe((userList) => {
-      this.userList = userList;
+  onDeleteBtnClick() {
+    this.deleteUser = true;
+  }
+
+  confirmDelete() {
+    this.userId = (JSON.parse(localStorage.getItem('currentUser') || ''))?._id
+    this.authService.deleteUser(this.userId || '').subscribe(() => {
+    this.deleteUser = false;
+    localStorage.clear();
+    this.router.navigate(['login'])
     })
   }
 }
-
-
-
-

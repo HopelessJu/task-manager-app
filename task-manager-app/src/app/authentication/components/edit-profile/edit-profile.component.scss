@@ -1,0 +1,48 @@
+$fontcolor: rgb(243, 224, 252);
+$backgroundcolor: rgba(81, 63, 87, 0.388);
+
+
+.edit-wrapper {
+  width: 320px;
+  max-width: 320px;
+  border-radius: 15px;
+  box-sizing: border-box;
+  padding: 20px 40px;
+  background-color: $backgroundcolor;
+  box-shadow: 0 0 20px 7px #c2bed8;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.signup-form-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+.edit-header-ctr {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-left: -30px;
+
+  & button {
+    filter: sepia(0.6)
+  }
+}
+
+.edit-header {
+  text-align: center;
+  font-size: 24px;
+  color: $fontcolor;
+  margin: 0;
+}
+
+.edit-btns {
+  display: flex;
+  justify-content: space-between;
+
+  & button {
+    width: 100px;
+    padding: 0;
+  }
+}
