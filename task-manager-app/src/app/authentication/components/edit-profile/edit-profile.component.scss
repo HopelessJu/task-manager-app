@@ -40,9 +40,17 @@ $backgroundcolor: rgba(81, 63, 87, 0.388);
 .edit-btns {
   display: flex;
   justify-content: space-between;
-
-  & button {
-    width: 100px;
-    padding: 0;
-  }
 }
+
+.save-edit-btn {
+  width: 125px;
+  padding: 0;
+}
+
+.cancel-edit-btn {
+  width: 100px;
+  padding: 0;
+}
+
+
+

@@ -14,12 +14,13 @@ $accentcolor: #ffd640;
 .board-wrapper {
   display: flex;
   flex-direction: column;
-  width: 100%
+  width: 100%;
+  margin: 0 auto;
 }
 
 .board-header {
   display: flex;
-  max-width: 1160px;
+  max-width: 1920px;
   width: 100%;
   justify-content: flex-start;
   align-items: center;
@@ -35,9 +36,24 @@ $accentcolor: #ffd640;
 }
 
 .columns-ctr {
+  max-width: 1920px;
   display: flex;
   gap: 20px;
   overflow-x: scroll;
+
+}
+
+::-webkit-scrollbar {
+  height: 3px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent
+}
+
+::-webkit-scrollbar-thumb {
+  background: #806a8e;
+    border-radius: 5px;
 }
 
 .column-ctr {

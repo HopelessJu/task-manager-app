@@ -5,7 +5,7 @@
     <textarea name="task-description" id="" cols="30" rows="5" placeholder="Enter task description"[(ngModel)]="description"></textarea>
     <div class="modal-btns">
       <button mat-raised-button color="primary" (click)="onCancel()">{{'cancel' | translatePipe}}</button>
-      <button mat-raised-button color="accent" (click)="onConfirm()">{{'confirm' | translatePipe}}</button>
+      <button mat-raised-button color="accent" (click)="onConfirm()" disabled="{{!title || !description}}">{{'confirm' | translatePipe}}</button>
     </div>
   </div>
 </div>

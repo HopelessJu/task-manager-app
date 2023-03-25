@@ -6,7 +6,7 @@
     <input type="text" [placeholder]=" 'Enter-board-title' | translatePipe" [(ngModel)]="boardPostRequestObj.title" name="" id="">
   <div class="create-btns-wrapper">
     <button mat-raised-button  class="cancel-create-btn" (click)="closeCreateForm()">{{'cancel' | translatePipe}}</button>
-    <button mat-raised-button  class="create-board-btn" (click)="onCreateBoardBtnClick()">{{'create' | translatePipe}}</button>
+    <button mat-raised-button  class="create-board-btn" (click)="onCreateBoardBtnClick()" disabled="{{!boardPostRequestObj.title}}">{{'create' | translatePipe}}</button>
   </div>
 </div>
 

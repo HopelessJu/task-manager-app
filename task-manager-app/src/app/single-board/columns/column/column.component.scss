@@ -33,6 +33,19 @@ $accentcolor: #ffd640;
   width: 100%;
 }
 
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent
+}
+
+::-webkit-scrollbar-thumb {
+  background: #806a8e;
+    border-radius: 5px;
+}
+
 .tasks-ctr {
   width: 100%;
   height: 80%;

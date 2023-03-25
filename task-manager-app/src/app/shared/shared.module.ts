@@ -10,7 +10,6 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import { ColumnModalComponent } from './column-modal/column-modal.component';
 import { TaskModalComponent } from './task-modal/task-modal.component';
-import { EditUserModalComponent } from './edit-user-modal/edit-user-modal.component';
 import { TranslatePipePipe } from './translate-pipe.pipe';
 
 
@@ -19,14 +18,12 @@ import { TranslatePipePipe } from './translate-pipe.pipe';
     ConfirmationModalComponent,
     ColumnModalComponent,
     TaskModalComponent,
-    EditUserModalComponent,
     TranslatePipePipe,
   ],
   exports: [
     ConfirmationModalComponent,
     ColumnModalComponent,
     TaskModalComponent,
-    EditUserModalComponent,
     TranslatePipePipe
   ],
   imports: [

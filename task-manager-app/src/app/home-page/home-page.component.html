@@ -1,17 +1,34 @@
-<H1>{{'Welcome-to'| translatePipe}} <span>PMA</span></H1>
-<img class="home-img-1" src="../../assets/Humaaans-1.png" alt="">
-<p>{{'With-this'| translatePipe}} <span>Project Manager Application</span>{{'you-can-effortlessly'| translatePipe}}</p>
-<p>{{'Our-user-friendly'| translatePipe}}</p>
-<img class="home-img-2" src="../../assets/Humaaans-3.png" alt="">
-<div>
-  <p>{{'What-can-do'| translatePipe}}</p>
-  <ul>
-    <li>{{'Create-boards' | translatePipe}}</li>
-    <li>{{'Create-columns' | translatePipe}}</li>
-    <li>{{'Create-tasks' | translatePipe}}</li>
-    <li>{{'Transfer-tasks' | translatePipe}}</li>
-    <li>{{'Update-tasks' | translatePipe}}</li>
-  </ul>
+<div class="home-page-ctr">
+  <H1>{{'Welcome-to'| translatePipe}} <span>PMA</span></H1>
+  <div class="home-page-div-1">
+    <div class="text-ctr">
+      <p>{{'With-this'| translatePipe}} <span>Project Manager Application</span> {{'you-can-effortlessly'| translatePipe}}</p>
+      <p>{{'Our-user-friendly'| translatePipe}}</p>
+    </div>
+    <img class="home-img-1" src="../../assets/Humaaans-1.png" [alt]="'image-of-1-person' | translatePipe">
+  </div>
+  <div class="home-page-div-2">
+    <img class="home-img-2" src="../../assets/Humaaans-3.png" [alt]="'image-of-3-person' | translatePipe">
+    <div>
+      <p>{{'What-can-do'| translatePipe}}</p>
+      <ul>
+        <li>
+          <mat-icon>check_circle_outline</mat-icon>
+          {{'Create-boards' | translatePipe}}</li>
+        <li>
+          <mat-icon>check_circle_outline</mat-icon>
+          {{'Create-columns' | translatePipe}}</li>
+        <li>
+          <mat-icon>check_circle_outline</mat-icon>
+          {{'Create-tasks' | translatePipe}}</li>
+        <li>
+          <mat-icon>check_circle_outline</mat-icon>
+          {{'Transfer-tasks' | translatePipe}}</li>
+        <li>
+          <mat-icon>check_circle_outline</mat-icon>
+          {{'Update-tasks' | translatePipe}}</li>
+      </ul>
+   </div>
+  </div>
 </div>
-<div>
-</div>
+

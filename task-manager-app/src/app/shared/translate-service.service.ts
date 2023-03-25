@@ -60,11 +60,9 @@ export class TranslateServiceService {
         'add-column' : '+ Add new column',
         'edit-task' : 'Edit Task',
         'Enter-column-title' : 'Enter column title',
-        'Enter-board-title' : 'Enter board title'
-
-
-
-
+        'Enter-board-title' : 'Enter board title',
+        'image-of-1-person': 'image-of-1-person',
+        'image-of-3-person' : 'image-of-3-persons'
       },
     },
     ru: {
@@ -117,10 +115,9 @@ export class TranslateServiceService {
         'add-column' : '+ Добавить новую колонку',
         'edit-task' : 'Редактировать задачу ',
         'Enter-column-title' : 'Введите название колонки ',
-        'Enter-board-title' : 'Введите название доски'
-
-
-
+        'Enter-board-title' : 'Введите название доски',
+        'image-of-1-person': 'изображение-одного-человека',
+        'image-of-3-person' : 'изображение-3-человек'
       },
     },
   }

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomePageComponent } from './home-page.component';
 import { SharedModule } from '../shared/shared.module';
+import {MatIconModule} from '@angular/material/icon';
 
 
 
@@ -11,7 +12,9 @@ import { SharedModule } from '../shared/shared.module';
   ],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    MatIconModule
+
   ]
 })
 export class HomePageModule { }

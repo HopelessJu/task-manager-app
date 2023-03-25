@@ -38,6 +38,9 @@ export class CreateBoardComponent {
     this.boardPostRequestObj.users = mappedUsers;
     this.boardsService.createBoard(this.boardPostRequestObj).subscribe((item) => {
         this.boardCreated.emit(item)
+        this.showForm = false;
+        this.boardPostRequestObj.title = '';
     })
+
   }
 }
