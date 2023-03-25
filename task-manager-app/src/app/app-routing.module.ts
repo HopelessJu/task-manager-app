@@ -1,3 +1,4 @@
+import { HomePageComponent } from './home-page/home-page.component';
 import { EditProfileComponent } from './authentication/components/edit-profile/edit-profile.component';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './authentication/components/login/login.component';
@@ -8,6 +9,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { SingleBoardPageComponent } from './single-board/pages/single-board-page/single-board-page.component';
 
 const routes: Routes = [
+  { path: '', component: HomePageComponent },
   { path: 'main', component: BoardsComponent },
   { path: 'signup', component: SignupComponent},
   { path: 'login', component: LoginComponent},

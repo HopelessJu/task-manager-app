@@ -1,3 +1,4 @@
+import { BoardItem } from './../../boards/models/boards.model';
 import { TaskItem } from './../columns/models/task.model';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -19,6 +20,11 @@ export class SingleBoardService {
     });
 
     return headers;
+  }
+
+  getBoard(BoardId:string): Observable<BoardItem> {
+    const url = `${this.urlBody}/boards/${BoardId}`
+    return this.httpClient.get<BoardItem>(url, {headers: this.getUpdatedHeaders()})
   }
 
   getColumns(BoardId: string): Observable<ColumnItem[]> {

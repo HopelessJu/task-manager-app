@@ -1,3 +1,7 @@
+header {
+  position:sticky;
+  top: 0;
+}
 main {
   max-width: 1920px;
   height: fit-content;
@@ -7,8 +11,6 @@ main {
 
 }
 
-footer, header {
-}
 
 .main-wr {
   width: 100%;

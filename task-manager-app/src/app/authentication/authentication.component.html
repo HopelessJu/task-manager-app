@@ -1,16 +1,16 @@
 <div class="auth-wrapper">
-  <button mat-raised-button color="primary" routerLink="/login" *ngIf="!token"> Login</button>
-  <button mat-raised-button color="accent" routerLink="/signup" *ngIf="!token">SignUp</button>
+  <button mat-raised-button color="primary" routerLink="/login" *ngIf="!token">{{'login-btn-name' | translatePipe}}</button>
+  <button mat-raised-button color="accent" routerLink="/signup" *ngIf="!token">{{'sign-up-btn-name' | translatePipe}}</button>
   <div class="logged-wrapper" *ngIf="token" >
     <p>{{user.login}}</p>
     <button mat-fab color="accent" class="user-icon" [matMenuTriggerFor]="menu"><mat-icon>person</mat-icon></button>
     <mat-menu #menu="matMenu">
       <button mat-menu-item (click)="onEditProfileClick()">
         <mat-icon>edit</mat-icon>
-        <span>Edit profile</span>
+        <span>{{'edit-profile' | translatePipe}}</span>
       </button>
     </mat-menu>
     <span> | </span>
-    <button mat-raised-button color="accent" (click)="onLogoutBtnClick()">Log out</button>
+    <button mat-raised-button color="accent" (click)="onLogoutBtnClick()">{{'log-out' | translatePipe}}</button>
   </div>
 </div>

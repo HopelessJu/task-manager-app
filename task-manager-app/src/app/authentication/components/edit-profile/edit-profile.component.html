@@ -1,38 +1,38 @@
 <div class="edit-wrapper">
   <div class="edit-header-ctr">
     <button mat-mini-fab color="primary" class="return-btn" routerLink="/main"><mat-icon>arrow_back</mat-icon></button>
-    <h2 class="edit-header">Edit user profile</h2>
+    <h2 class="edit-header">{{'Edit-user-profile' | translatePipe}}</h2>
   </div>
   <form [formGroup]="signUpForm" class="signup-form-wrapper">
     <mat-form-field appearance="fill">
-      <mat-label>New user name</mat-label>
+      <mat-label>{{'New-user-name' | translatePipe}}</mat-label>
       <input matInput formControlName="name" autocomplete="name">
-      <mat-error *ngIf="controls['name'].getError('required')">User name is required</mat-error>
+      <mat-error *ngIf="controls['name'].getError('required')">{{'New-user-name-error' | translatePipe}}</mat-error>
     </mat-form-field>
     <mat-form-field appearance="fill">
-      <mat-label>New user login</mat-label>
+      <mat-label>{{'New-user-login' | translatePipe}}</mat-label>
       <input matInput formControlName="login" autocomplete="login">
-      <mat-error *ngIf="controls['login'].getError('required')">Login is required</mat-error>
+      <mat-error *ngIf="controls['login'].getError('required')">{{'New-user-login-error' | translatePipe}}</mat-error>
     </mat-form-field>
     <mat-form-field appearance="fill">
-      <mat-label>New password</mat-label>
+      <mat-label>{{'New-password' | translatePipe}}</mat-label>
       <input matInput formControlName="password" [type]="hide ? 'password' : 'text'" autocomplete="new-password">
       <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
       </button>
-      <mat-error *ngIf="controls['password'].getError('required')">Password is required</mat-error>
+      <mat-error *ngIf="controls['password'].getError('required')">{{'New-password-error' | translatePipe}}</mat-error>
     </mat-form-field>
     <mat-form-field appearance="fill">
-      <mat-label>Confirm password</mat-label>
+      <mat-label>{{'Confirm-password' | translatePipe}}</mat-label>
       <input matInput formControlName="confirm_password" [type]="hide ? 'password' : 'text'" autocomplete="new-password">
       <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
       </button>
-      <mat-error *ngIf="controls['confirm_password'].getError('MustMatch')">Should match the password</mat-error>
+      <mat-error *ngIf="controls['confirm_password'].getError('MustMatch')">{{'Should-match' | translatePipe}}</mat-error>
     </mat-form-field>
     <div class="edit-btns">
-      <button class="save-edit-btn" mat-raised-button color="warn" (click)="onDeleteBtnClick()">Delete User</button>
-      <button class="cancel-edit-btn" mat-raised-button color="accent" (click)="onEditAccountBtnClick()">Save</button>
+      <button class="save-edit-btn" mat-raised-button color="warn" (click)="onDeleteBtnClick()">{{'Delete-user' | translatePipe}}</button>
+      <button class="cancel-edit-btn" mat-raised-button color="accent" (click)="onEditAccountBtnClick()">{{'Save' | translatePipe}}</button>
     </div>
   </form>
 </div>

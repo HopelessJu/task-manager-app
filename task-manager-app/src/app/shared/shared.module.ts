@@ -11,6 +11,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { ColumnModalComponent } from './column-modal/column-modal.component';
 import { TaskModalComponent } from './task-modal/task-modal.component';
 import { EditUserModalComponent } from './edit-user-modal/edit-user-modal.component';
+import { TranslatePipePipe } from './translate-pipe.pipe';
 
 
 @NgModule({
@@ -19,12 +20,14 @@ import { EditUserModalComponent } from './edit-user-modal/edit-user-modal.compon
     ColumnModalComponent,
     TaskModalComponent,
     EditUserModalComponent,
+    TranslatePipePipe,
   ],
   exports: [
     ConfirmationModalComponent,
     ColumnModalComponent,
     TaskModalComponent,
-    EditUserModalComponent
+    EditUserModalComponent,
+    TranslatePipePipe
   ],
   imports: [
     CommonModule,
