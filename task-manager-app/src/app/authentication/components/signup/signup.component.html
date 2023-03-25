@@ -1,38 +1,38 @@
 
 <div class="registration-wrapper">
-  <h2 class="registration-header">Sign Up</h2>
+  <h2 class="registration-header">{{'sigh-up' | translatePipe}}</h2>
   <form [formGroup]="signUpForm" class="signup-form-wrapper">
     <mat-form-field appearance="fill">
-      <mat-label>User name</mat-label>
+      <mat-label>{{'user-name' | translatePipe}}</mat-label>
       <input matInput formControlName="name" autocomplete="name">
-      <mat-error *ngIf="controls['name'].getError('required')">User name is required</mat-error>
+      <mat-error *ngIf="controls['name'].getError('required')">{{'user-name-error' | translatePipe}}</mat-error>
     </mat-form-field>
     <mat-form-field appearance="fill">
-      <mat-label>User login</mat-label>
+      <mat-label>{{'user-login' | translatePipe}}</mat-label>
       <input matInput formControlName="login" autocomplete="login">
-      <mat-error *ngIf="controls['login'].getError('required')">Login is required</mat-error>
+      <mat-error *ngIf="controls['login'].getError('required')">{{'user-login-error' | translatePipe}}</mat-error>
     </mat-form-field>
     <mat-form-field appearance="fill">
-      <mat-label>Password</mat-label>
+      <mat-label>{{'password' | translatePipe}}</mat-label>
       <input matInput formControlName="password" [type]="hide ? 'password' : 'text'" autocomplete="new-password">
       <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
       </button>
-      <mat-error *ngIf="controls['password'].getError('required')">Password is required</mat-error>
+      <mat-error *ngIf="controls['password'].getError('required')">{{'password-error' | translatePipe}}</mat-error>
     </mat-form-field>
     <mat-form-field appearance="fill">
-      <mat-label>Confirm password</mat-label>
+      <mat-label>{{'Confirm-password' | translatePipe}}</mat-label>
       <input matInput formControlName="confirm_password" [type]="hide ? 'password' : 'text'" autocomplete="new-password">
       <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
       </button>
-      <mat-error *ngIf="controls['confirm_password'].getError('MustMatch')">Should match the password</mat-error>
+      <mat-error *ngIf="controls['confirm_password'].getError('MustMatch')">{{'Should-match' | translatePipe}}</mat-error>
     </mat-form-field>
-    <button class="create-account-btn" mat-raised-button color="primary" (click)="onCreateAccountBtnClick()">Create account</button>
+    <button class="create-account-btn" mat-raised-button color="primary" (click)="onCreateAccountBtnClick()">{{'Create-account' | translatePipe}}</button>
   </form>
   <div class="to-login-form">
-    <p>Already have an account?</p>
-    <a routerLink="/login">Log in</a>
+    <p>{{'Already-have an account' | translatePipe}}</p>
+    <a routerLink="/login">{{'login' | translatePipe}}</a>
   </div>
 </div>
 

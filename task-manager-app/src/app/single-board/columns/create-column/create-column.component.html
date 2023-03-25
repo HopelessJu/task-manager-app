@@ -1,2 +1,2 @@
-<button class="create-column-btn" (click)="onCreateColumnClick()" >+ add new column</button>
+<button class="create-column-btn" (click)="onCreateColumnClick()" >{{'add-column' | translatePipe}}</button>
 <app-column-modal *ngIf="isClicked" (cancelled)="cancel()" (confirmed)="confirm($event)"></app-column-modal>

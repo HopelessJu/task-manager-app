@@ -1,5 +1,5 @@
 <div class="boards-wrapper">
-  <h2 class="boards-page-header">BOARDS</h2>
+  <h2 class="boards-page-header">{{'Boards' | translatePipe}}</h2>
   <div class="boards-container">
     <div *ngFor="let board of boardList">
       <app-board [item]="board" (boardDeleted)="getBoards()"></app-board>

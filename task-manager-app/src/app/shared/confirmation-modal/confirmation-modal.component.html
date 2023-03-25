@@ -1,11 +1,11 @@
 <div class="modal-ctr">
   <div class="modal-wrapper">
-    <h2>Confirm delete</h2>
-    <p>Are you sure?</p>
-    <span>Are you sure you want to delete these records? This process cannot be undone.</span>
+    <h2>{{'confirm-delete' | translatePipe}}</h2>
+    <p>{{'are-you-sure' | translatePipe}}</p>
+    <span>{{'are-you-sure-you-want' | translatePipe}}</span>
     <div class="modal-btns">
-      <button mat-raised-button color="primary" (click)="onCancel()">Cancel</button>
-      <button mat-raised-button color="warn" (click)="onConfirm()">Confirm</button>
+      <button mat-raised-button color="primary" (click)="onCancel()">{{'cancel' | translatePipe}}</button>
+      <button mat-raised-button color="warn" (click)="onConfirm()">{{'confirm' | translatePipe}}</button>
     </div>
   </div>
 </div>
