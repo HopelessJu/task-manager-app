@@ -3,6 +3,7 @@ import { UserItem } from './../../models/user.model';
 import { AuthenticationService } from './../../services/authentication.service';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Component } from '@angular/core';
+import { CustomErrorHandlerService } from 'src/app/custom-error-handler.service';
 
 
 
@@ -21,7 +22,7 @@ export class SignupComponent {
   //   password: '',
   // }
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthenticationService, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private authService: AuthenticationService, private router: Router, private handleError: CustomErrorHandlerService) {
     this.signUpForm = formBuilder.group({
       name: [null, Validators.required],
       login: [null, Validators.required],
@@ -54,9 +55,13 @@ export class SignupComponent {
 
   onCreateAccountBtnClick() {
     const {name, login, password} = this.signUpForm.value;
-    this.authService.createUser({name, login, password}).subscribe((item) => {
-      // window.alert(`Success! User ${item.login} was created`)
+    this.authService.createUser({name, login, password}).subscribe({
+      next: (item) => {
       this.router.navigate(['/login'])
+    },
+      error: (error) => {
+        this.handleError.handleError(error.error.message);
+      }
     })
   }
 

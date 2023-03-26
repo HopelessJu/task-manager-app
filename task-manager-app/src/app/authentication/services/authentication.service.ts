@@ -1,4 +1,4 @@
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject} from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { UserItem } from '../models/user.model';
@@ -33,7 +33,7 @@ export class AuthenticationService {
   }
 
   loginUser(item:UserItem): Observable<{token: string}> {
-    return this.httpClient.post<{token: string}>(this.urlSignin, item);
+      return this.httpClient.post<{token: string}>(this.urlSignin, item);
   }
 
   updateUser(userId:string, item:UserItem): Observable<UserItem> {

@@ -3,8 +3,7 @@ header {
   top: 0;
 }
 main {
-  height: fit-content;
-  min-height: 80%;
+  min-height: calc(100vh - 180px);
   background-color: rgb(232, 228, 255);
   padding: 20px 20px;
 

@@ -2,6 +2,7 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from './services/authentication.service';
 import { Component, OnInit } from '@angular/core';
 import {UserItem} from './models/user.model'
+import { CustomErrorHandlerService } from '../custom-error-handler.service';
 
 
 @Component({
@@ -23,7 +24,7 @@ export class AuthenticationComponent implements OnInit {
   }
 
 
-  constructor(private authService: AuthenticationService, private router: Router) {
+  constructor(private authService: AuthenticationService, private router: Router, private handleError: CustomErrorHandlerService) {
   }
 
   ngOnInit(): void {
@@ -53,16 +54,6 @@ export class AuthenticationComponent implements OnInit {
   }
 
   cancelEdit() {
-    this.isClicked = false;
-  }
-
-  confirmEdit(event: {login: string, password: string}) {
-    this.userObj.password = event.password;
-    this.userObj.login = event.login
-    this.userObj.name = this.user.name;
-    this.authService.updateUser(this.user._id || '', this.userObj).subscribe((item) => {
-      console.log(item)
-    })
     this.isClicked = false;
   }
 }

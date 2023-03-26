@@ -3,6 +3,7 @@ import { UserItem } from '../../models/user.model';
 import { AuthenticationService } from './../../services/authentication.service';
 import { Component, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { CustomErrorHandlerService } from 'src/app/custom-error-handler.service';
 
 @Component({
   selector: 'app-edit-profile',
@@ -18,7 +19,7 @@ export class EditProfileComponent {
   signUpForm: FormGroup;
   userId:string = '';
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthenticationService, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private authService: AuthenticationService, private router: Router, private handleError: CustomErrorHandlerService) {
     this.signUpForm = formBuilder.group({
       name: [null, Validators.required],
       login: [null, Validators.required],
@@ -52,14 +53,16 @@ export class EditProfileComponent {
   onEditAccountBtnClick() {
     const {name, login, password} = this.signUpForm.value;
     this.userId = (JSON.parse(localStorage.getItem('currentUser') || ''))?._id
-    console.log(this.userId)
-    this.authService.updateUser(this.userId, {name, login, password}).subscribe((item) => {
+    this.authService.updateUser(this.userId, {name, login, password}).subscribe({
+      next: (item) => {
       localStorage.setItem('currentUser', JSON.stringify(item));
       this.user.login = login;
-      console.log(localStorage.getItem('currentUser'))
-      console.log(this.user.login)
-      this.router.navigate(['main'])
-    })
+      this.router.navigate(['main']);
+      },
+      error: (error) => {
+        this.handleError.handleError(error.error.message);
+      }
+   })
   }
 
   cancelDelete() {

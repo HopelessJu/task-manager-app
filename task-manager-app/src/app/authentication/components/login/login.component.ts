@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators, ReactiveFormsModule } 
 import { UserItem } from './../../models/user.model';
 import { AuthenticationService } from './../../services/authentication.service';
 import { Router } from '@angular/router';
+import { CustomErrorHandlerService } from 'src/app/custom-error-handler.service';
 
 
 @Component({
@@ -17,8 +18,9 @@ export class LoginComponent implements OnInit {
   //   login: '',
   //   password: '',
   // }
+  error: Error | null = null;
 
-  constructor(private formBuilder: FormBuilder, public authService: AuthenticationService, private router: Router) {
+  constructor(private formBuilder: FormBuilder, public authService: AuthenticationService, private router: Router, private handleError: CustomErrorHandlerService) {
     this.loginForm = formBuilder.group({
       login: [null, Validators.required],
       password:[null, Validators.required],
@@ -39,13 +41,17 @@ export class LoginComponent implements OnInit {
 
   onLoginBtnClick() {
     const { login, password } = this.loginForm.value;
-    this.authService.loginUser({ login, password }).subscribe(
-      (item) => {
+    this.authService.loginUser({login, password}).subscribe({
+      next: (item) => {
         if(item.token) {
           localStorage.setItem('token', item.token);
           this.setCurrentUsers(login, item.token);
           this.router.navigate(['main']);
         }
+      },
+      error: (error) => {
+        this.handleError.handleError(error.error.message);
+      }
     })
   }
 

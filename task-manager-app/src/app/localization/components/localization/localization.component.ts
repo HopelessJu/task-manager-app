@@ -9,7 +9,6 @@ export class LocalizationComponent {
 
   onClick() {
     const element: HTMLInputElement | null = document.querySelector('.lang-input');
-    console.log(element?.checked)
   }
 
 }
