@@ -28,6 +28,7 @@ export class AuthenticationComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     this.authService.token$.subscribe(res => {
       if (res) {
         this.token = true;
@@ -56,6 +57,7 @@ export class AuthenticationComponent implements OnInit {
   cancelEdit() {
     this.isClicked = false;
   }
+
 }
 
 

@@ -11,7 +11,6 @@ import { CustomErrorHandlerService } from 'src/app/custom-error-handler.service'
   styleUrls: ['./edit-profile.component.scss']
 })
 export class EditProfileComponent {
-  @Output() deleted = new EventEmitter()
   hide:boolean = true;
   deleteUser: boolean = false;
   token: string = '';
@@ -82,7 +81,8 @@ export class EditProfileComponent {
     this.authService.deleteUser(this.userId || '').subscribe(() => {
     this.deleteUser = false;
     localStorage.clear();
-    this.router.navigate(['login'])
+    window.location.href='/login';
+
     })
   }
 }
