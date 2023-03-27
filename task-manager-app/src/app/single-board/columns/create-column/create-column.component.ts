@@ -37,7 +37,6 @@ export class CreateColumnComponent {
   this.singleBoardService.createColumn(this.boardId, this.columnObj).subscribe({
     next: item => {
     this.columnCreated.emit();
-    console.log(item)
     },
     error: (error) => {
       if(error.status === 403) {

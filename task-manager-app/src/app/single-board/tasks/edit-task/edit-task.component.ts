@@ -21,7 +21,6 @@ export class EditTaskComponent implements OnInit {
     this.editService.sharedData$.subscribe(data => {
       this.title = data.title;
       this.description = data.description;
-      console.log(this.title, this.description)
     });
   }
 

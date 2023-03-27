@@ -33,6 +33,15 @@ export class SingleBoardPageComponent implements OnInit {
         event.currentIndex,
       );
     }
+
+    event.container.data.forEach((column, index) => {
+        this.singleBoardService.updateColumn({...column, order: index}).subscribe({
+          next: () => {},
+          error: (error) => {
+            this.handleError.handleError(error.error.messsage);
+          }
+        })
+    })
   }
 
   ngOnInit(): void {
@@ -62,7 +71,7 @@ export class SingleBoardPageComponent implements OnInit {
   public getColumns() {
     this.singleBoardService.getColumns(this.boardId).subscribe({
       next: (columnList: ColumnItem[]) => {
-      this.columnList = columnList;
+      this.columnList = columnList.sort((columnA, columnB) => columnA.order - columnB.order);;
       },
       error: (error) => {
         if(error.status === 403) {

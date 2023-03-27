@@ -21,6 +21,8 @@ export class ColumnComponent implements OnInit {
   boardId: string = '';
   @Input() taskList: TaskItem[] = [];
   @Input() columnList: ColumnItem[] = [];
+  isClicked: boolean = false;
+  newColumnTitle: string = this.item?.title || '';
 
   taskObj: TaskItem = {
     title: "string",
@@ -53,9 +55,6 @@ export class ColumnComponent implements OnInit {
         event.currentIndex,
       );
     }
-    event.item.data.order = event.currentIndex;
-    event.item.data.columnId = newColumnId;
-
     event.container.data.forEach((taskInColumn, index) => {
       this.singleBoardService.updateTask(this.boardId, newColumnId || '', taskInColumn._id || '', {...taskInColumn, order: index}).subscribe()
       });
@@ -73,7 +72,6 @@ export class ColumnComponent implements OnInit {
     this.taskObj.title = event.title;
     this.taskObj.description = event.description;
     this.singleBoardService.createTask(this.boardId, this.columnId, this.taskObj).subscribe(item => {
-      console.log(item)
       this.getTasks()
     })
     this.addTask = false;
@@ -92,6 +90,23 @@ export class ColumnComponent implements OnInit {
       this.deleted.emit();
     })
     this.toDelete = false;
+  }
+
+  activateInput() {
+    this.isClicked = true;
+    this.newColumnTitle = this.item?.title || '';
+  }
+
+  deactivateInput() {
+    this.isClicked = false;
+  }
+
+  confirmChange() {
+    if(this.item) {
+      this.item.title = this.newColumnTitle;
+      this.singleBoardService.updateColumn(this.item).subscribe();
+    }
+    this.isClicked = false;
   }
 
   public getTasks() {

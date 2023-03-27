@@ -56,6 +56,14 @@ export class SingleBoardService {
     return this.httpClient.put<TaskItem>(url, taskForSending, {headers: this.getUpdatedHeaders()} )
   }
 
+  updateColumn(column: ColumnItem): Observable<ColumnItem> {
+    const url = `${this.urlBody}/boards/${column.boardId}/columns/${column._id}`;
+    const columnForSend = {...column};
+    delete columnForSend._id;
+    delete columnForSend.boardId;
+    return this.httpClient.put<ColumnItem>(url, columnForSend, {headers: this.getUpdatedHeaders()})
+    }
+
   deleteColumn(boardId:string, columnId: string): Observable<ColumnItem> {
     const url = `${this.urlBody}/boards/${boardId}/columns/${columnId}`;
     return this.httpClient.delete<ColumnItem>(url, {headers: this.getUpdatedHeaders()})

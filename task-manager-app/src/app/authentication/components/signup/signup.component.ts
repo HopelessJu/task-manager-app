@@ -65,10 +65,6 @@ export class SignupComponent {
     })
   }
 
-  onClick() {
-    console.log('clicked')
-  }
-
   private getUsers() {
     this.authService.getUsers().subscribe((userList) => {
       this.userList = userList;

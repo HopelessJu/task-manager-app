@@ -33,6 +33,26 @@ $accentcolor: #ffd640;
   width: 100%;
 }
 
+.new-title-input {
+  border-radius: 5px;
+  border: none;
+  outline: 2px solid $backgroundcoloronhover;
+
+  &:focus {
+    outline:2px solid $accentcolor;
+  }
+}
+
+.btns-ctr {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.done-btn {
+  filter:hue-rotate(45deg)
+}
+
 ::-webkit-scrollbar {
   width: 3px;
 }
