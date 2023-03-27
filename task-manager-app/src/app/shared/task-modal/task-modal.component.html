@@ -1,0 +1,11 @@
+<div class="modal-ctr">
+  <div class="modal-wrapper">
+    <h2>{{'add-task' | translatePipe}}</h2>
+    <input type="text" placeholder="Enter task title" [(ngModel)]="title">
+    <textarea name="task-description" id="" cols="30" rows="5" placeholder="Enter task description"[(ngModel)]="description"></textarea>
+    <div class="modal-btns">
+      <button mat-raised-button color="primary" (click)="onCancel()">{{'cancel' | translatePipe}}</button>
+      <button mat-raised-button color="accent" (click)="onConfirm()" disabled="{{!title || !description}}">{{'confirm' | translatePipe}}</button>
+    </div>
+  </div>
+</div>

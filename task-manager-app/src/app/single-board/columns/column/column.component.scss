@@ -1,0 +1,92 @@
+$fontcolor: rgb(182, 151, 197);
+$fontcoloronhover: rgb(243, 224, 252);
+$backgroundcolor:rgba(250, 235, 215, 0.116);
+$backgroundcoloronhover: rgba(81, 63, 87, 0.388);
+$accentcolor: #ffd640;
+
+.column-wrapper {
+  width: 14em;
+  height: 20em;
+  border: 2px solid $backgroundcoloronhover;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 10px 5px;
+
+  & h2 {
+    margin: 0;
+    width: 90%;
+    text-align: center;
+    border-bottom: 1px solid rgb(182 151 197 / 36%);
+    color: rgba(81, 63, 87, 0.707);
+  }
+}
+
+.all-tasks-ctr {
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+}
+
+.new-title-input {
+  border-radius: 5px;
+  border: none;
+  outline: 2px solid $backgroundcoloronhover;
+
+  &:focus {
+    outline:2px solid $accentcolor;
+  }
+}
+
+.btns-ctr {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.done-btn {
+  filter:hue-rotate(45deg)
+}
+
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent
+}
+
+::-webkit-scrollbar-thumb {
+  background: #806a8e;
+    border-radius: 5px;
+}
+
+.tasks-ctr {
+  width: 100%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+}
+
+.tasks-drop-list {
+  display: flex;
+  flex-direction: column;
+  gap: inherit;
+  min-height: 8em;
+}
+
+.task-btns {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+}
+
+.mat-mdc-icon-button.mat-primary {
+  --mdc-icon-button-icon-color: #b6a3d7;
+}

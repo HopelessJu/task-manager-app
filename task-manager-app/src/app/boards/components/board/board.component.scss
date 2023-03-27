@@ -1,0 +1,55 @@
+$fontcolor: rgb(182, 151, 197);
+$fontcoloronhover: rgb(243, 224, 252);
+$backgroundcolor:rgba(250, 235, 215, 0.116);
+$backgroundcoloronhover: rgba(81, 63, 87, 0.388);
+
+.board-wrapper {
+  background-color: $backgroundcolor;
+  border: 2px solid $fontcolor;
+  border-radius: 5px;
+  width: 15em;
+  height: 10em;
+  box-sizing: border-box;
+  padding: 10px 10px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  transition: all ease-in 0.3s;
+
+  &:hover  {
+    box-shadow: 0 0 6px 1px #55545252;
+    background-color: $backgroundcoloronhover;
+    border: 2px solid $fontcoloronhover;
+
+    & p {
+      color: $fontcoloronhover;
+    }
+  }
+
+  & p {
+    margin: 10px 0 0 0;
+    color: $fontcolor;
+    font-weight: 600;
+    text-transform: uppercase;
+    word-break: break-all;
+  }
+}
+
+.remove-btn-ctr {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.remove-board-btn, .open-board-btn {
+  width: 30px;
+  height: 30px;
+  filter: sepia(0.6);
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+

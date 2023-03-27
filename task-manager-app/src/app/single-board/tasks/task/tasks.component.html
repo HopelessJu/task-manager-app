@@ -1,0 +1,12 @@
+<div class="task-ctr" style=" {{'order:' + item?.order}} ">
+  <div class="task-content">
+  <p class="task-title">{{item?.title}}</p>
+  <p class="task-description">{{item?.description}}</p>
+  </div>
+  <div class="btns-ctr">
+    <button mat-icon-button color="primary" (click)="onEditTaskClick()"><mat-icon>edit</mat-icon></button>
+    <button mat-icon-button color="accent" (click)="onRemoveTaskClick()"><mat-icon>delete</mat-icon></button>
+  </div>
+</div>
+<app-confirmation-modal *ngIf="toDelete" (cancelled)="cancelDelete()" (confirmed)="confirmDelete()"></app-confirmation-modal>
+<app-edit-task *ngIf="toEdit" (cancelled)="cancelEdit()" (confirmed)="confirmEdit($event)" ></app-edit-task>

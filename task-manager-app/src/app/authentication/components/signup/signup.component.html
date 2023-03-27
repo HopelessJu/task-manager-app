@@ -1,0 +1,41 @@
+
+<div class="registration-wrapper">
+  <h2 class="registration-header">{{'sign-up' | translatePipe}}</h2>
+  <form [formGroup]="signUpForm" class="signup-form-wrapper">
+    <mat-form-field appearance="fill">
+      <mat-label>{{'user-name' | translatePipe}}</mat-label>
+      <input matInput formControlName="name" autocomplete="name">
+      <mat-error *ngIf="controls['name'].getError('required')">{{'user-name-error' | translatePipe}}</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>{{'user-login' | translatePipe}}</mat-label>
+      <input matInput formControlName="login" autocomplete="login">
+      <mat-error *ngIf="controls['login'].getError('required')">{{'user-login-error' | translatePipe}}</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>{{'password' | translatePipe}}</mat-label>
+      <input matInput formControlName="password" [type]="hide ? 'password' : 'text'" autocomplete="new-password">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      <mat-error *ngIf="controls['password'].getError('required')">{{'password-error' | translatePipe}}</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>{{'Confirm-password' | translatePipe}}</mat-label>
+      <input matInput formControlName="confirm_password" [type]="hide ? 'password' : 'text'" autocomplete="new-password">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      <mat-error *ngIf="controls['confirm_password'].getError('MustMatch')">{{'Should-match' | translatePipe}}</mat-error>
+    </mat-form-field>
+    <button class="create-account-btn" mat-raised-button color="primary" (click)="onCreateAccountBtnClick()">{{'Create-account' | translatePipe}}</button>
+  </form>
+  <div class="to-login-form">
+    <p>{{'Already-have an account' | translatePipe}}</p>
+    <a routerLink="/login">{{'login' | translatePipe}}</a>
+  </div>
+</div>
+
+
+
+

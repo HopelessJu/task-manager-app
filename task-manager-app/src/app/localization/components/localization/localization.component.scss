@@ -1,0 +1,51 @@
+.toggle-btn {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+
+  input[type="checkbox"] {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+
+    &:before {
+      position: absolute;
+      content: "";
+      height: 26px;
+      width: 26px;
+      left: 4px;
+      bottom: 4px;
+      background-image: url(../../../../assets/en.png);
+      background-size: 128%;
+      background-position: 50% 43%;
+      transition: .4s;
+      border-radius: 50%;
+    }
+  }
+
+  input:checked + .slider {
+    background-color: #ccc;
+
+    &:before {
+      background-image: url(../../../../assets/ru-language-icon.png);
+      width: 26px;
+      height: 26px;
+      background-position: center;
+      background-size: 105%;
+      transform: translateX(26px);
+    }
+  }
+}

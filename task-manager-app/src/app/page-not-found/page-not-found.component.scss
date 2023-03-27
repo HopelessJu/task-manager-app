@@ -1,0 +1,47 @@
+$fontcolor: rgb(182, 151, 197);
+$fontcoloronhover: rgb(243, 224, 252);
+$backgroundcolor:rgba(250, 235, 215, 0.116);
+$backgroundcoloronhover: rgba(81, 63, 87, 0.388);
+$accentcolor: #ffd640;
+
+div {
+  background-image: url('../../assets/not-found.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  height: 320px;
+  width: 320px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+
+  a {
+    text-decoration: none;
+    color: $fontcolor;
+    font-size: 18px;
+    font-weight: 500;
+
+    &:hover {
+      cursor: pointer;
+      color: $backgroundcoloronhover;
+    }
+  }
+
+  .p-404 {
+    text-decoration: none;
+    color: $fontcolor;
+    font-size: 42px;
+    font-weight: 500;
+  }
+
+.text {
+  font-size: 16px;
+  color: $backgroundcoloronhover;
+
+  }
+
+}
+

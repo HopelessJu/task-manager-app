@@ -1,0 +1,23 @@
+<div class="column-wrapper">
+  <h2 class="column-title" (click)="activateInput()" *ngIf="!isClicked">{{item?.title}}</h2>
+  <div class="input-ctr" *ngIf="isClicked">
+    <input class="new-title-input" type="text" [(ngModel)]="newColumnTitle">
+    <div class="btns-ctr">
+      <button mat-icon-button color="warn" (click)="deactivateInput()"><mat-icon>clear</mat-icon></button>
+      <button class="done-btn" mat-icon-button color="accent" (click)="confirmChange()"><mat-icon>done</mat-icon></button>
+    </div>
+  </div>
+  <div class="all-tasks-ctr">
+    <div class="tasks-drop-list" cdkDropList [cdkDropListData]="taskList" (cdkDropListDropped)="drop($event, item?._id)">
+      <div class="tasks-ctr" *ngFor="let task of taskList" [cdkDragData]="task" cdkDrag>
+        <app-tasks [item]="task" (deleted)="getTasks()"></app-tasks>
+      </div>
+    </div>
+  </div>
+  <div class="task-btns">
+    <button mat-icon-button color="primary" class="add-task" (click)="onAddTaskClick()"><mat-icon>add</mat-icon></button>
+    <button mat-icon-button color="primary" class="remove-task" (click)="onRemoveColumnClick()"><mat-icon>delete</mat-icon></button>
+  </div>
+</div>
+<app-confirmation-modal *ngIf="toDelete" (cancelled)="cancelDelete()" (confirmed)="confirmDelete()"></app-confirmation-modal>
+<app-task-modal *ngIf="addTask" (cancelled)="cancelAdd()" (confirmed)="confirmAdd($event)"></app-task-modal>

@@ -1,0 +1,23 @@
+<div class="login-wrapper">
+  <h2 class="login-header">{{'login' | translatePipe}}</h2>
+  <form [formGroup]="loginForm" class="login-form-wrapper">
+    <mat-form-field appearance="fill">
+      <mat-label>{{'user-login' | translatePipe}}</mat-label>
+      <input matInput formControlName="login" autocomplete="login">
+      <mat-error *ngIf="controls['login'].getError('required')">{{'user-login-error' | translatePipe}}</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>{{'password' | translatePipe}}</mat-label>
+      <input [type]="hide ? 'password' : 'text'" matInput formControlName="password" autocomplete="current-password">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      <mat-error *ngIf="controls['password'].getError('required')">{{'password-error' | translatePipe}}</mat-error>
+    </mat-form-field>
+    <button class="login-btn" mat-raised-button color="primary" (click)="onLoginBtnClick()">{{'login' | translatePipe}}</button>
+  </form>
+  <div class="to-signup-form">
+    <p>{{'don\'t have an account' | translatePipe}}</p>
+    <a routerLink="/signup">{{'sign-up' | translatePipe}}</a>
+  </div>
+</div>

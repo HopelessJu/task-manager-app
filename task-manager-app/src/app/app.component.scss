@@ -1,0 +1,18 @@
+header {
+  position:sticky;
+  top: 0;
+}
+main {
+  min-height: calc(100vh - 180px);
+  background-color: rgb(232, 228, 255);
+  padding: 20px 20px;
+
+}
+
+
+.main-wr {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,11 @@
+<div class="modal-ctr">
+  <div class="modal-wrapper">
+    <h2>{{'confirm-delete' | translatePipe}}</h2>
+    <p>{{'are-you-sure' | translatePipe}}</p>
+    <span>{{'are-you-sure-you-want' | translatePipe}}</span>
+    <div class="modal-btns">
+      <button mat-raised-button color="primary" (click)="onCancel()">{{'cancel' | translatePipe}}</button>
+      <button mat-raised-button color="warn" (click)="onConfirm()">{{'confirm' | translatePipe}}</button>
+    </div>
+  </div>
+</div>

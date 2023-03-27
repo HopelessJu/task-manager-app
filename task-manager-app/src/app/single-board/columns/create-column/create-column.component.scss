@@ -1,0 +1,28 @@
+$fontcolor: rgb(182, 151, 197);
+$fontcoloronhover: rgb(243, 224, 252);
+$backgroundcolor:rgba(250, 235, 215, 0.116);
+$backgroundcoloronhover: rgba(81, 63, 87, 0.388);
+$accentcolor: #ffd640;
+
+.create-column-btn {
+  width: 15em;
+  height: 2em;
+  border: 3px dashed $backgroundcoloronhover;
+  border-radius: 5px;
+  background-color: $backgroundcolor;
+  transition: all ease-in 0.3s;
+
+  color: $backgroundcoloronhover;
+  font-weight: 600;
+
+
+  &:hover {
+    height: 21.5em;
+    cursor: pointer;
+    background-color: $backgroundcoloronhover;
+    border: 3px dashed $fontcoloronhover;
+    color: $fontcoloronhover;
+  }
+
+
+}
