@@ -1,3 +1,4 @@
+import { CustomErrorHandlerService } from 'src/app/custom-error-handler.service';
 import { BoardItem } from './../../../boards/models/boards.model';
 import { TaskItem } from './../../columns/models/task.model';
 import { SingleBoardService } from './../../services/single-board.service';
@@ -19,7 +20,7 @@ export class SingleBoardPageComponent implements OnInit {
   item: ColumnItem | null = null;
   boardTitle: string = '';
 
-  constructor(private singleBoardService: SingleBoardService, private route: ActivatedRoute) {}
+  constructor(private singleBoardService: SingleBoardService, private route: ActivatedRoute, private router: Router, private handleError: CustomErrorHandlerService) {}
 
   dropColumn(event: CdkDragDrop<ColumnItem[]>) {
     if (event.previousContainer === event.container) {
@@ -43,17 +44,32 @@ export class SingleBoardPageComponent implements OnInit {
 
     this.route.params.subscribe(params => {
       this.boardId = params['boardId'];
-      this.singleBoardService.getBoard(this.boardId).subscribe((boardItem) => {
+      this.singleBoardService.getBoard(this.boardId).subscribe({
+        next: (boardItem) => {
         this.boardTitle = boardItem.title;
+        this.getColumns();
+        },
+        error: (error) => {
+          if(error.status === 403) {
+            this.router.navigate(['']);
+            localStorage.clear();
+          }
+        }
       })
-      this.getColumns();
-    });
-
+    })
   }
 
   public getColumns() {
-    this.singleBoardService.getColumns(this.boardId).subscribe((columnList: ColumnItem[]) => {
+    this.singleBoardService.getColumns(this.boardId).subscribe({
+      next: (columnList: ColumnItem[]) => {
       this.columnList = columnList;
+      },
+      error: (error) => {
+        if(error.status === 403) {
+          this.router.navigate(['']);
+          localStorage.clear();
+        }
+      }
     });
   }
-};
+}

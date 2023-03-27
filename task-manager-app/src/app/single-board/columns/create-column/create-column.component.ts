@@ -1,3 +1,4 @@
+import { CustomErrorHandlerService } from 'src/app/custom-error-handler.service';
 import { ColumnItem } from './../models/column.model';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { SingleBoardService } from '../../services/single-board.service';
@@ -18,7 +19,7 @@ export class CreateColumnComponent {
 
   isClicked: boolean = false;
 
-  constructor(private singleBoardService: SingleBoardService, private route: ActivatedRoute) {}
+  constructor(private singleBoardService: SingleBoardService, private route: ActivatedRoute, private router: Router, private handleError: CustomErrorHandlerService) {}
 
   onCreateColumnClick() {
     this.isClicked = true;
@@ -33,12 +34,20 @@ export class CreateColumnComponent {
     this.route.params.subscribe(params => {
     this.boardId = params['boardId'];
   });
-  this.singleBoardService.createColumn(this.boardId, this.columnObj).subscribe(item => {
+  this.singleBoardService.createColumn(this.boardId, this.columnObj).subscribe({
+    next: item => {
     this.columnCreated.emit();
     console.log(item)
+    },
+    error: (error) => {
+      if(error.status === 403) {
+        this.router.navigate(['']);
+        localStorage.clear();
+      }
+    }
   })
-    this.isClicked = false;
-  }
+  this.isClicked = false;
+}
 
 
 

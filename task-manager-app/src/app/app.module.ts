@@ -12,6 +12,7 @@ import { SingleBoardModule } from './single-board/single-board.module';
 import { SharedModule } from './shared/shared.module';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 
@@ -19,6 +20,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
+    PageNotFoundComponent,
   ],
   exports: [],
   imports: [

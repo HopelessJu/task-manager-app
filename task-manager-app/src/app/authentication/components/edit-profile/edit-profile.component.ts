@@ -60,6 +60,10 @@ export class EditProfileComponent {
       this.router.navigate(['main']);
       },
       error: (error) => {
+        if(error.status === 403) {
+          this.router.navigate(['']);
+          localStorage.clear();
+        }
         this.handleError.handleError(error.error.message);
       }
    })

@@ -2,6 +2,7 @@ import { BoardItem } from './../../models/boards.model';
 import { BoardsService } from './../../services/boards.service';
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
+import { CustomErrorHandlerService } from 'src/app/custom-error-handler.service';
 
 
 
@@ -17,7 +18,7 @@ export class BoardComponent implements OnInit {
   isClicked: boolean = false;
   boardList: BoardItem[] = [];
 
-  constructor(private router: Router, private boardsService: BoardsService) {
+  constructor(private router: Router, private boardsService: BoardsService, private handleError: CustomErrorHandlerService) {
   }
 
   ngOnInit(): void {
@@ -36,9 +37,17 @@ export class BoardComponent implements OnInit {
   }
 
   confirm(boardId?: string) {
-    this.boardsService.deleteBoard(boardId || '').subscribe((item) => {
+    this.boardsService.deleteBoard(boardId || '').subscribe({
+      next: (item) => {
       this.boardDeleted.emit(item);
       this.isClicked = false;
+      },
+      error: (error) => {
+        if(error.status === 403) {
+          this.router.navigate(['']);
+          localStorage.clear();
+        }
+      }
     })
   }
 }

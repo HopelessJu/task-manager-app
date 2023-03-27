@@ -1,7 +1,10 @@
+import { AuthenticationService } from './../../../authentication/services/authentication.service';
 import { UserItem } from './../../../authentication/models/user.model';
 import { BoardItem } from './../../models/boards.model';
 import { BoardsService } from './../../services/boards.service';
 import { Component, Output, EventEmitter } from '@angular/core';
+import { CustomErrorHandlerService } from 'src/app/custom-error-handler.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -19,7 +22,7 @@ export class CreateBoardComponent {
   boardList: BoardItem[] = [];
   showForm: boolean = false;
 
-  constructor (private boardsService: BoardsService) {}
+  constructor (private boardsService: BoardsService, private handleError: CustomErrorHandlerService, private router: Router, private authService: AuthenticationService) {}
 
   showCreateForm() {
     this.showForm = true;
@@ -36,11 +39,18 @@ export class CreateBoardComponent {
     const parsed = JSON.parse(currentUser || '');
     this.boardPostRequestObj.owner = parsed.login;
     this.boardPostRequestObj.users = mappedUsers;
-    this.boardsService.createBoard(this.boardPostRequestObj).subscribe((item) => {
+    this.boardsService.createBoard(this.boardPostRequestObj).subscribe({
+      next: (item) => {
         this.boardCreated.emit(item)
         this.showForm = false;
         this.boardPostRequestObj.title = '';
+      },
+      error: (error) => {
+        if(error.status === 403) {
+          localStorage.clear();
+          this.router.navigate(['']);
+        }
+      }
     })
-
   }
 }

@@ -1,3 +1,4 @@
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { EditProfileComponent } from './authentication/components/edit-profile/edit-profile.component';
 import { AppComponent } from './app.component';
@@ -11,10 +12,11 @@ import { SingleBoardPageComponent } from './single-board/pages/single-board-page
 const routes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'main', component: BoardsComponent },
-  { path: 'signup', component: SignupComponent},
-  { path: 'login', component: LoginComponent},
-  { path: 'profile', component: EditProfileComponent},
-  { path: 'board/:boardId', component: SingleBoardPageComponent}
+  { path: 'signup', component: SignupComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'profile', component: EditProfileComponent },
+  { path: 'board/:boardId', component: SingleBoardPageComponent },
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({

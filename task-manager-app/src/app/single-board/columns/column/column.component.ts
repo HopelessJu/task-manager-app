@@ -1,8 +1,9 @@
+import { CustomErrorHandlerService } from 'src/app/custom-error-handler.service';
 import { SingleBoardService } from './../../services/single-board.service';
 import { Component, Input, OnInit, Output, ViewChildren, EventEmitter } from '@angular/core';
 import { ColumnItem } from '../models/column.model';
 import { TaskItem } from '../models/task.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import {CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
 @Component({
@@ -29,7 +30,7 @@ export class ColumnComponent implements OnInit {
     users: [''],
   }
 
-  constructor(private singleBoardService: SingleBoardService, private route: ActivatedRoute) {}
+  constructor(private singleBoardService: SingleBoardService, private route: ActivatedRoute, private handleError: CustomErrorHandlerService, private router: Router) {}
 
   ngOnInit(): void {
     const user = (JSON.parse(localStorage.getItem('currentUser') || '' ));
@@ -56,9 +57,9 @@ export class ColumnComponent implements OnInit {
     event.item.data.columnId = newColumnId;
 
     event.container.data.forEach((taskInColumn, index) => {
-      this.singleBoardService.updateTask(this.boardId, newColumnId || '', taskInColumn._id || '', {...taskInColumn, order: index}).subscribe();
-    })
-  }
+      this.singleBoardService.updateTask(this.boardId, newColumnId || '', taskInColumn._id || '', {...taskInColumn, order: index}).subscribe()
+      });
+    }
 
   onAddTaskClick() {
     this.addTask = true;
@@ -94,9 +95,17 @@ export class ColumnComponent implements OnInit {
   }
 
   public getTasks() {
-    // this.columnId = this.item?._id || '';
-    this.singleBoardService.getTasks(this.boardId, this.columnId).subscribe(taskList => {
+    this.singleBoardService.getTasks(this.boardId, this.columnId).subscribe({
+      next:  taskList => {
       this.taskList = taskList.sort((taskA, taskB) => taskA.order - taskB.order);
+      },
+      error: (error) => {
+        if(error.status === 403) {
+          this.router.navigate(['']);
+          localStorage.clear();
+        }
+      }
     })
   }
+
 }
