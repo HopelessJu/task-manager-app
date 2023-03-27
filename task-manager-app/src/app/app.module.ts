@@ -13,6 +13,7 @@ import { SharedModule } from './shared/shared.module';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 
 
@@ -43,7 +44,10 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
       provide: HTTP_INTERCEPTORS,
       useClass: GlobalHttpErrorHandlerInterceptor,
       multi: true
-    }
+    },
+    {
+      provide: LocationStrategy,
+      useClass: HashLocationStrategy}
    ],
   bootstrap: [AppComponent]
 })
